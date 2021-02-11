@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en_US" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Tryptor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="semantic/semantic.min.css">
+    <script>
+      if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+    <script src="js/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="></script>
+    <script src="semantic/semantic.min.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/cypher.js"></script>
+    <link id="themeStyle" rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+      if (window.module) module = window.module;
+    </script>
+</head>
+<body onload="initPage()">
+<div id="page" class="ui stackable grid">
+    <div class="sixteen wide centered column"></div>
+    <div class="sixteen wide centered column"></div>
+    <div class="ten wide centered column">
+        <div class="ui stackable menu">
+            <button data-inverted="" data-tooltip="Create New Key" class="ui center aligned teal icon button"
+                    onclick="genKey()"
+                    id="genKey" name="genKey"><i class="yellow key icon"></i>
+            </button>
+            <button data-inverted="" data-tooltip="Encode Text" class="ui center aligned primary button icon"
+                    onclick="encode()"
+                    id="encode" name="encode"><i
+                    class="lock icon"></i>
+            </button>
+            <button data-inverted="" data-tooltip="Decode Text" class="ui center aligned blue button icon"
+                    onclick="decode()" id="decode"
+                    name="decode"><i
+                    class="unlock alternate icon"></i>
+            </button>
+            <button data-inverted="" data-tooltip="Reset Text" class="ui center aligned red button icon"
+                    onclick="reset()"
+                    id="reset" name="reset"><i class="undo alternate icon"></i>
+            </button>
+            <button data-inverted="" data-tooltip="Save Output to File" class="ui center aligned green button icon"
+                    onclick="saveTextAsFile()" value="save" id="saveOutput"><i class="download icon"></i>
+            </button>
+            <div data-inverted="" data-tooltip="Upload Input">
+                <label for="fileUpload" class="ui icon grey item button">
+                    <i class="green upload icon"></i>
+                </label>
+                <input onchange="loadFile()" type="file" id="fileUpload" style="display: none">
+            </div>
+            <div data-inverted="" data-tooltip="Upload Key">
+                <label for="keyUpload" class="ui icon grey item button">
+                    <i class="teal upload icon"></i> <i class="teal key icon"></i>
+                </label>
+                <input onchange="loadKey()" type="file" id="keyUpload" style="display: none">
+            </div>
+            <button data-inverted="" data-tooltip="Download Key" class="ui center aligned grey button icon"
+                    onclick="saveKey()" value="save" id="saveKey">
+                <i class="orange download icon"></i>
+                <i class="orange key icon"></i>
+            </button>
+            <div class="ui compact menu">
+                <div class="ui simple dropdown item">
+                    Theme
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div onclick="changeTheme(0)" class="item">Reset</div>
+                        <div onclick="changeTheme(1)" class="item">Dark</div>
+                        <div onclick="changeTheme(2)" class="item">Light</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ten wide centered column">
+        <div class="ui slider checkbox">
+            <label for="themeToggle" style="color: white">Show Key</label>
+            <input id="themeToggle" type="checkbox" onclick="toggleKey();">
+        </div>
+        <form class="ui form">
+            <label for="key"></label>
+            <input type="password" id="key" name="key" class="key" placeholder="Key">
+            <label for="crypt"></label>
+            <textarea id="crypt" name="crypt" class="crypt" placeholder="Input"></textarea>
+        </form>
+        <form class="ui form" action="mailto:" method="post">
+            <label for="output"></label>
+            <textarea readonly id="output" name="output" class="output" placeholder="Output"></textarea>
+        </form>
+    </div>
+</div>
+<script>
+  require('./renderer.js');
+</script>
+</body>
+</html>

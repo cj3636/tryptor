@@ -1,0 +1,70 @@
+{
+  "name": "tryptor",
+  "productName": "tryptor",
+  "version": "1.0.0",
+  "private": false,
+  "description": "An encryption program better than PGP.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
+  },
+  "keywords": [],
+  "author": "phill",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "npm",
+        "icon": "src/img/lock.png"
+      },
+      "electronWinstallerConfig": {
+        "name": "tryptor",
+        "icon": "src/img/lock.png"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "cj3636",
+        "name": "tryptor",
+        "type": "git",
+        "url": "https://github.com/cj3636/tryptor"
+      },
+      "windowsStoreConfig": {
+        "packageName": "tryptor",
+        "name": "tryptor"
+      }
+    }
+  },
+  "dependencies": {
+    "asar": "^2.0.3",
+    "custom-electron-titlebar": "^3.2.0",
+    "electron": "^11.3.0",
+    "electron-store": "^7.0.2",
+    "electron-compile": "^6.4.4",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "electron-forge": "^5.2.4",
+    "electron-prebuilt-compile": "8.2.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "node-abi": "^2.21.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "graceful-fs": "^4.2.6"
+  }
+}
